@@ -22,9 +22,13 @@ export class Polyline extends React.Component {
   renderPolyline () {
     const {
       visible,
+      maps,
       map,
       google,
       path,
+      icons,
+      strokeWeight,
+      strokeOpacity,
       strokeColor
     } = this.props
 
@@ -34,9 +38,13 @@ export class Polyline extends React.Component {
 
     const params = {
       visible,
+      maps,
       map,
       path,
-      strokeColor
+      strokeWeight,
+      strokeOpacity,
+      strokeColor,
+      icons,
     }
 
     this.polyline = new google.maps.Polyline(params)
