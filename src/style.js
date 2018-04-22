@@ -174,5 +174,3 @@ export const LabelContainer = styled.div`
   flex-wrap: wrap;
   flex-grow: 1;
 `
-
-

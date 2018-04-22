@@ -1,29 +1,42 @@
 import React from 'react'
 
+import Context from '../Context'
+import Polyline from './Polyline'
 import {
-  ButtonColor,
   Panels,
-  InfoLabel,
   Buttons,
-  ButtonPanel,
   ButtonContainer,
   Button,
-  LabelContainer,
-  Label
+  Label,
+  ButtonColor,
+  InfoLabel,
+  ButtonPanel,
+  LabelContainer
 } from '../style'
-  
+
 class Bed extends React.Component {
   constructor () {
     super()
     this.state = {
       infoLabel: '+',
-      infoDisplay: 'none'
+      infoDisplay: 'none',
+      visibleLabel: '>',
+      visible: false
     }
   }
 
-  visibleClick (index) {
-    this.setState({ visibleLabel: this.state.visibleLabel === '>' ? '<' : '>' })
-    this.props.onClick(index)
+  componentDidMount () {
+    this.setState({
+      visible: this.props.polyline.visible,
+      visibleLabel: this.props.polyline.visible === true ? '<' : '>'
+    })
+  }
+
+  visibleClick () {
+    this.setState({
+      visible: !this.state.visible,
+      visibleLabel: !this.state.visible === true ? '<' : '>'
+    })
   }
 
   infoClick () {
@@ -37,14 +50,14 @@ class Bed extends React.Component {
       <ButtonContainer width='180px'>
         <Buttons>
           <Button grow='1'>
-            <Label>{this.props.label} </Label>
+            <Label>{this.props.polyline.name} </Label>
             <ButtonColor backgroundColor={this.props.polyline.strokeColor} />
           </Button>
           <Button width='24px' marginLeft='1px' onClick={() => this.infoClick()}>
-            <Label>{this.state.infoLabel}</Label>
+            <Label>{ this.state.infoLabel }</Label>
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.visibleClick(this.props.index)}>
-            <Label>{ this.props.polyline.visible ? '<' : '>' }</Label>
+          <Button width='24px' marginLeft='1px' onClick={() => this.visibleClick()}>
+            <Label>{ this.state.visibleLabel }</Label>
           </Button>
         </Buttons>
         <Panels>
@@ -62,17 +75,29 @@ class Bed extends React.Component {
             <InfoLabel>
               Coordinates:
             </InfoLabel>
-            { this.props.polyline.path.map((coord) =>
-              <LabelContainer paddingLeft='20px'>
-                <InfoLabel>{coord.lat}</InfoLabel> 
+            { this.props.polyline.path.map((coord, i) =>
+              <LabelContainer key={i} paddingLeft='20px'>
+                <InfoLabel>{coord.lat}</InfoLabel>
                 <InfoLabel> {coord.lng}</InfoLabel>
               </LabelContainer>
             )}
           </ButtonPanel>
         </Panels>
+
+        <Context.Consumer>
+          {(context) => (
+            <Polyline
+              key={this.props.key}
+              {...this.props.polyline}
+              visible={this.state.visible}
+              google={window.google}
+              map={context.map}
+            />
+          )}
+        </Context.Consumer>
       </ButtonContainer>
     )
   }
-} 
+}
 
 export default Bed

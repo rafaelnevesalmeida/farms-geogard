@@ -1,19 +1,20 @@
 import React from 'react'
 
 import Context from '../Context'
-import Marker from './Marker'
+import Polyline from './Polyline'
 import {
   Panels,
   Buttons,
   ButtonContainer,
   Button,
   Label,
+  ButtonColor,
   InfoLabel,
   ButtonPanel,
   LabelContainer
 } from '../style'
 
-class Bed extends React.Component {
+class Track extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -26,8 +27,8 @@ class Bed extends React.Component {
 
   componentDidMount () {
     this.setState({
-      visible: this.props.marker.visible,
-      visibleLabel: this.props.marker.visible === true ? '<' : '>'
+      visible: this.props.track.visible,
+      visibleLabel: this.props.track.visible === true ? '<' : '>'
     })
   }
 
@@ -49,7 +50,8 @@ class Bed extends React.Component {
       <ButtonContainer width='180px'>
         <Buttons>
           <Button grow='1'>
-            <Label>{this.props.marker.name} </Label>
+            <Label>{this.props.track.name} </Label>
+            <ButtonColor backgroundColor={this.props.track.strokeColor} />
           </Button>
           <Button width='24px' marginLeft='1px' onClick={() => this.infoClick()}>
             <Label>{ this.state.infoLabel }</Label>
@@ -60,22 +62,33 @@ class Bed extends React.Component {
         </Buttons>
         <Panels>
           <ButtonPanel display={this.state.infoDisplay}>
+            <InfoLabel>
+              Color: {this.props.track.strokeColor}
+            </InfoLabel>
+            <InfoLabel>
+              StrokeOpacity: {this.props.track.strokeOpacity}
+            </InfoLabel>
+            <InfoLabel>
+              StrokeWeight: {this.props.track.strokeWeight}
+            </InfoLabel>
             <InfoLabel />
             <InfoLabel>
               Coordinates:
             </InfoLabel>
-            <LabelContainer paddingLeft='20px'>
-              <InfoLabel>{ this.props.marker.position.lat }</InfoLabel>
-              <InfoLabel>{ this.props.marker.position.lng }</InfoLabel>
-            </LabelContainer>
+            { this.props.track.path.map((coord, i) =>
+              <LabelContainer key={i} paddingLeft='20px'>
+                <InfoLabel>{coord.lat}</InfoLabel>
+                <InfoLabel> {coord.lng}</InfoLabel>
+              </LabelContainer>
+            )}
           </ButtonPanel>
         </Panels>
 
         <Context.Consumer>
           {(context) => (
-            <Marker
+            <Polyline
               key={this.props.key}
-              {...this.props.marker}
+              {...this.props.track}
               visible={this.state.visible}
               google={window.google}
               map={context.map}
@@ -87,4 +100,4 @@ class Bed extends React.Component {
   }
 }
 
-export default Bed
+export default Track

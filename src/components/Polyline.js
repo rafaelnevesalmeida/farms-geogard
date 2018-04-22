@@ -44,7 +44,7 @@ export class Polyline extends React.Component {
       strokeWeight,
       strokeOpacity,
       strokeColor,
-      icons,
+      icons
     }
 
     this.polyline = new google.maps.Polyline(params)

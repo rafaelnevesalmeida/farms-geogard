@@ -1,16 +1,26 @@
+// eslint-disable-next-line
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { ThemeProvider } from 'styled-components'
+
+import { ApolloProvider } from 'react-apollo'
+import ApolloClient from 'apollo-boost'
 
 import theme from './theme.js'
 import Provider from './Provider.js'
 import App from './App.js'
 
+const client = new ApolloClient({
+  uri: 'https://farms-geogard-api.herokuapp.com/api' // https://localhost:4000/api
+})
+
 ReactDOM.render(
   <Provider>
-    <ThemeProvider theme={theme}>
-      <App />
-    </ThemeProvider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <App />
+      </ThemeProvider>
+    </ApolloProvider>
   </Provider>,
   document.getElementById('root')
 )
