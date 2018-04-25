@@ -1,12 +1,15 @@
 import React from 'react'
 
 import PanelLeft from './components/PanelWithData'
+import Infos from './components/Infos'
+
 import Context from './Context'
 import {
   Panel,
   Left,
   Right,
   MapContainer,
+  Center,
   AppContainer,
   Header,
   Footer
@@ -43,7 +46,10 @@ class AppComponent extends React.Component {
           <Left>
             <PanelLeft />
           </Left>
-          <MapContainer id='map' />
+          <Center>
+            <MapContainer id='map' />
+            <Infos />
+          </Center>
           <Right />
         </Panel>
         <Footer />

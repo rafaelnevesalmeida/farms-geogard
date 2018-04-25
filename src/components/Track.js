@@ -18,46 +18,39 @@ class Track extends React.Component {
   constructor () {
     super()
     this.state = {
-      infoLabel: '+',
       infoDisplay: 'none',
-      visibleLabel: '>',
       visible: false
     }
   }
 
   componentDidMount () {
     this.setState({
-      visible: this.props.track.visible,
-      visibleLabel: this.props.track.visible === true ? '<' : '>'
+      visible: this.props.track.visible
     })
-  }
-
-  visibleClick () {
-    this.setState({
-      visible: !this.state.visible,
-      visibleLabel: !this.state.visible === true ? '<' : '>'
-    })
-  }
-
-  infoClick () {
-    this.setState({
-      infoLabel: this.state.infoLabel === '+' ? '-' : '+',
-      infoDisplay: this.state.infoDisplay === 'none' ? 'flex' : 'none' })
   }
 
   render () {
     return (
-      <ButtonContainer width='180px'>
+      <ButtonContainer>
         <Buttons>
           <Button grow='1'>
             <Label>{this.props.track.name} </Label>
             <ButtonColor backgroundColor={this.props.track.strokeColor} />
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.infoClick()}>
-            <Label>{ this.state.infoLabel }</Label>
+          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
+            infoDisplay: this.state.infoDisplay === 'none' ? 'flex' : 'none'
+          })}>
+            <Label>+</Label>
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.visibleClick()}>
-            <Label>{ this.state.visibleLabel }</Label>
+          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
+            infoDisplay: this.state.infoDisplay === 'none' ? 'flex' : 'none'
+          })}>
+            <Label>{ this.state.infoDisplay === 'none' ? 'v' : '^' }</Label>
+          </Button>
+          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
+            visible: !this.state.visible
+          })}>
+            <Label>{ this.state.visible ? '<' : '>' }</Label>
           </Button>
         </Buttons>
         <Panels>
