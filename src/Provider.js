@@ -2,7 +2,7 @@ import React from 'react'
 
 import Context from './Context'
 
-export class Provider extends React.Component {
+export class ContextProvider extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -11,13 +11,13 @@ export class Provider extends React.Component {
         zoom: 19,
         mapTypeId: 'satellite',
         center: { lat: 53.16180499999999, lng: -4.196003000000019 }
-      }
+      },
+      lang: 'en'
     }
   }
 
-  setGoogleMap (map) {
+  setGoogleMap = map =>
     this.setState({ map: map })
-  }
 
   setMapZoom (zoom) {
     let mapParams = this.state.mapParams
@@ -52,4 +52,4 @@ export class Provider extends React.Component {
   }
 }
 
-export default Provider
+export default ContextProvider

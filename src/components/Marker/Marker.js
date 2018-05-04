@@ -23,7 +23,6 @@ export class Marker extends React.Component {
     const {
       visible,
       map,
-      google,
       position,
       mapCenter,
       icon,
@@ -32,6 +31,7 @@ export class Marker extends React.Component {
       title
     } = this.props
 
+    const google = window.google // ????
     if (!google) {
       return null
     }

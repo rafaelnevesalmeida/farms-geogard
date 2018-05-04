@@ -1,65 +1,49 @@
 import React from 'react'
+import { addLocaleData, IntlProvider } from 'react-intl'
+import en from 'react-intl/locale-data/en'
+import pt from 'react-intl/locale-data/pt'
 
-import PanelLeft from './components/PanelWithData'
-import Infos from './components/Infos'
+import messages from './messages'
+import contextualize from './hoc/contextualize'
 
-import Context from './Context'
 import {
-  Panel,
-  Left,
-  Right,
-  MapContainer,
-  Center,
-  AppContainer,
+  Infos,
+  SidePanel,
+  PanelLeft,
+  GoogleMap
+} from './components'
+
+import {
   Header,
-  Footer
-} from './style'
+  Center,
+  Footer,
+  Container
+} from './elements'
 
-class AppComponent extends React.Component {
-  componentDidMount () {
-    let map = new window.google.maps.Map(document.getElementById('map'), { ...this.props.context.mapParams })
-    if (map) {
-      this.props.context.setGoogleMap(map)
-    }
+addLocaleData(en)
+addLocaleData(pt)
 
-    map.addListener('zoom_changed', () => {
-      this.props.context.setMapZoom(map.getZoom())
-    })
-
-    map.addListener('maptypeid_changed', () => {
-      this.props.context.setMapTypeId(map.getMapTypeId())
-    })
-
-    map.addListener('center_changed', () => {
-      this.props.context.setMapCenter({
-        lat: map.getCenter().lat(),
-        lng: map.getCenter().lng()
-      })
-    })
-  }
-
+class App extends React.Component {
   render () {
-    return (
-      <AppContainer>
-        <Header />
-        <Panel>
-          <Left>
-            <PanelLeft />
-          </Left>
-          <Center>
-            <MapContainer id='map' />
-            <Infos />
-          </Center>
-          <Right />
-        </Panel>
-        <Footer />
-      </AppContainer>
+    return ( // TODO change the visual props to modifier
+      <IntlProvider locale={this.props.lang} messages={messages[this.props.lang]} >
+        <Container flexWrap='null' flexDirection='column' backgroundColor='#448866'>
+          <Header />
+          <Container justifyContent='space-between'>
+            <SidePanel side='left' width='190px'>
+              <PanelLeft />
+            </SidePanel>
+            <Center>
+              <GoogleMap />
+              <Infos />
+            </Center>
+            <SidePanel width='150px' opened={false} />
+          </Container>
+          <Footer />
+        </Container>
+      </IntlProvider>
     )
   }
 }
 
-export default App => (
-  <Context.Consumer>
-    {context => <AppComponent context={context} />}
-  </Context.Consumer>
-)
+export default contextualize(App)

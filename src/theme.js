@@ -1,3 +1,24 @@
+import { injectGlobal } from 'styled-components'
+
+// eslint-disable-next-line
+injectGlobal`
+  html {
+    height: 100%;
+    margin: 0;
+    background-color: black;
+  }
+  body {
+    height: 100%;
+    margin: 0;
+    background-color: grey;
+  }
+  #root {
+    height: 100%;
+    margin: 0;
+    background-color: silver;
+  }
+`
+
 const theme = {
   fontSize: {
     medium: '1.0rem',
@@ -6,6 +27,9 @@ const theme = {
   },
   fontFamily: {
     default: 'Arial'
+  },
+  backgroundColor: {
+    button: '#AA8844'
   }
 }
 

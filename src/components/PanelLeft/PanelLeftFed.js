@@ -1,8 +1,9 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import PanelLeft from './Panel.js'
+import PanelLeft from './PanelLeft.js'
 
+// TODO separate file ?
 const polylinesListQuery = gql`
   query PolylinesListQuery {
     allPolylines {
