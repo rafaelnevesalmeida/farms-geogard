@@ -24,9 +24,6 @@ const PanelLeft = ({ data: { loading, error, allPolylines, allTracks, allMarkers
         {allPolylines.map((polyline, i) =>
           <Bed key={i} polyline={polyline} />
         )}
-        {allPolylines.map((polyline, i) =>
-          <Bed key={i} polyline={polyline} />
-        )}
       </ComponentMapGroup>
 
       <ComponentMapGroup>
