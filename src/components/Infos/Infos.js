@@ -3,16 +3,16 @@ import React from 'react'
 
 import { Container, LabelStatus } from '../../elements'
 
-const Infos = (props) => {
+const Infos = ({mapParams}) => {
   return ( // TODO change the visual props to modifier
     <Container height='auto'>
 
       <LabelStatus marginLeft='15px'>
-        Zoom: { props.mapParams.zoom }
+        Zoom: { mapParams.zoom }
       </LabelStatus>
 
       <LabelStatus marginLeft='15px'>
-            Center: { props.mapParams.center.lat }, { props.mapParams.center.lng }
+            Center: { mapParams.center.lat }, { mapParams.center.lng }
       </LabelStatus>
 
     </Container>

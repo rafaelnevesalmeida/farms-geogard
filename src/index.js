@@ -1,6 +1,7 @@
 // eslint-disable-next-line
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { BrowserRouter } from 'react-router-dom'
 import { ApolloProvider } from 'react-apollo'
 import ApolloClient from 'apollo-boost'
 import { ThemeProvider } from 'styled-components'
@@ -17,7 +18,9 @@ ReactDOM.render(
   <ContextProvider>
     <ApolloProvider client={client}>
       <ThemeProvider theme={theme}>
-        <App />
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
       </ThemeProvider>
     </ApolloProvider>
   </ContextProvider>,
