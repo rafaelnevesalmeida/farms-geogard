@@ -12,7 +12,8 @@ export class ContextProvider extends React.Component {
         mapTypeId: 'satellite',
         center: { lat: 53.16180499999999, lng: -4.196003000000019 }
       },
-      lang: 'en'
+      lang: 'en',
+      taskSelected: null
     }
   }
 
@@ -37,6 +38,22 @@ export class ContextProvider extends React.Component {
     this.setState({ mapParams: mapParams })
   }
 
+  /* loadTasks (allTasks) {
+    console.log('======= loadTasks -> allTasks =======: ', allTasks)
+
+    let tasks = [...allTasks]
+    this.setState({ tasks })
+
+    console.log('======= loadTasks -> tasks =======: ', this.state.tasks)
+  } */
+
+  selectTask (id) {
+    console.log('======= selectTask -> id =======: ', id)
+    this.setState({
+      taskSelected: id === this.state.taskSelected ? null : id
+    })
+  }
+
   render () {
     return (
       <Context.Provider value={{
@@ -44,7 +61,8 @@ export class ContextProvider extends React.Component {
         setGoogleMap: this.setGoogleMap.bind(this),
         setMapZoom: this.setMapZoom.bind(this),
         setMapTypeId: this.setMapTypeId.bind(this),
-        setMapCenter: this.setMapCenter.bind(this)
+        setMapCenter: this.setMapCenter.bind(this),
+        selectTask: this.selectTask.bind(this)
       }}>
         {this.props.children}
       </Context.Provider>

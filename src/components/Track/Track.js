@@ -20,7 +20,7 @@ class Track extends React.Component {
   }
 
   render () {
-    const { track } = this.props
+    const { addPolyline, track } = this.props
     const { infoDisplay, visible } = this.state
     const { Container, Button, Label, LabelInfo } = PolylineButton
 
@@ -35,9 +35,7 @@ class Track extends React.Component {
               height='15px'
             />
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
-            infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
-          })}>
+          <Button width='24px' marginLeft='1px' onClick={() => addPolyline(track)}>
             <Label>+</Label>
           </Button>
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({

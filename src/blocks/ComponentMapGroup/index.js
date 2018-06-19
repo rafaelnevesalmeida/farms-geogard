@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 
-import { Header } from '../../elements'
+import Task from '../../components/Task'
+import TaskButtonSave from '../../components/TaskButtonAction/TaskButtonSaveFed.js'
+import { Header, Container, Edit } from '../../elements'
 
 const ComponentMapGroup = styled.div`
   width: ${props => props.width || '100%'};
@@ -15,5 +17,9 @@ const ComponentMapGroup = styled.div`
 `
 
 ComponentMapGroup.Header = Header
+ComponentMapGroup.Container = Container
+ComponentMapGroup.Edit = Edit
+ComponentMapGroup.Task = Task
+ComponentMapGroup.ButtonSave = TaskButtonSave
 
 export default ComponentMapGroup

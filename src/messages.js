@@ -6,7 +6,9 @@ export default {
     'component.color': 'Color',
     'component.strokeOpacity': 'StrokeOpacity',
     'component.strokeWeight': 'StrokeWeight',
-    'component.coordinates': 'Coordinates'
+    'component.coordinates': 'Coordinates',
+    'tasks.label': 'Tasks',
+    'taskes.placeholder': 'New task'
   },
   pt: {
     'beds.label': 'Canteiros',

@@ -1,4 +1,4 @@
-// TODO automatizar isso aqui
+// TODO automate it
 
 export { default as Bed } from './Bed'
 export { default as GoogleMap } from './GoogleMap'
@@ -6,6 +6,10 @@ export { default as Infos } from './Infos'
 export { default as Mark } from './Mark'
 export { default as Marker } from './Marker'
 export { default as PanelLeft } from './PanelLeft'
+export { default as PanelRight } from './PanelRight'
 export { default as Polyline } from './Polyline'
 export { default as SidePanel } from './SidePanel'
 export { default as Track } from './Track'
+export { default as Task } from './Task'
+export { default as TaskButtonAction } from './TaskButtonAction'
+export { default as TasksPolylinesButtonAction } from './TasksPolylinesButtonAction'

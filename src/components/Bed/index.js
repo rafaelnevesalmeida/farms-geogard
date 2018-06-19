@@ -1,1 +1,1 @@
-export { default } from './Bed'
+export { default } from './BedFed.js'

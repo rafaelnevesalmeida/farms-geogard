@@ -1,6 +1,7 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
+import { tasksPolylinesByTaskQuery } from '../Task/TaskFed.js'
 import Polyline from '../Polyline'
 import PolylineButton from '../../blocks/PolylineButton'
 
@@ -16,6 +17,23 @@ class Bed extends React.Component {
   componentDidMount () {
     this.setState({
       visible: this.props.polyline.visible
+    })
+  }
+
+  addPolylineToTask (polylineId) {
+    const { mutate, taskSelected } = this.props
+
+    mutate({
+      variables: {
+        TaskId: taskSelected,
+        PolylineId: polylineId
+      },
+      refetchQueries: [
+        {
+          query: tasksPolylinesByTaskQuery,
+          variables: { taskId: taskSelected }
+        }
+      ]
     })
   }
 
@@ -35,9 +53,7 @@ class Bed extends React.Component {
               height='15px'
             />
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
-            infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
-          })}>
+          <Button width='24px' marginLeft='1px' onClick={() => this.addPolylineToTask(polyline.id)}>
             <Label>+</Label>
           </Button>
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({

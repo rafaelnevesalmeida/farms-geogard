@@ -33,11 +33,6 @@ class Mark extends React.Component {
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({
             infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
           })}>
-            <Label>+</Label>
-          </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
-            infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
-          })}>
             <Label>{ infoDisplay === 'none' ? 'v' : '^' }</Label>
           </Button>
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({

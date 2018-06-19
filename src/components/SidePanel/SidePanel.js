@@ -6,7 +6,7 @@ import {
   Container
 } from '../../elements'
 
-class LeftPanel extends React.Component {
+class SidePanel extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -37,4 +37,4 @@ class LeftPanel extends React.Component {
   }
 }
 
-export default LeftPanel
+export default SidePanel

@@ -7,6 +7,7 @@ import PanelLeft from './PanelLeft.js'
 const polylinesListQuery = gql`
   query PolylinesListQuery {
     allPolylines {
+      id
       name
       visible
       strokeColor

@@ -1,4 +1,4 @@
 import contextualize from '../../hoc/contextualize'
-import Bed from './Bed.js'
+import Bed from './BedMessaged.js'
 
 export default contextualize(Bed)

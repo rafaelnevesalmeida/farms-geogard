@@ -10,6 +10,7 @@ import {
   Infos,
   SidePanel,
   PanelLeft,
+  PanelRight,
   GoogleMap
 } from '../../components'
 
@@ -36,7 +37,9 @@ const Home = ({ lang }) => {
             <GoogleMap />
             <Infos />
           </Center>
-          <SidePanel width='150px' opened={false} />
+          <SidePanel width='190px'>
+            <PanelRight />
+          </SidePanel>
         </Container>
         <Footer />
       </Container>
