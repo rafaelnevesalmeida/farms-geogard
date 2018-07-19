@@ -1,5 +1,4 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 
 import ComponentMapGroup from '../../blocks/ComponentMapGroup'
 
@@ -12,7 +11,7 @@ class PanelRight extends React.Component {
   }
 
   render () {
-    const { Container, Edit, Task, ButtonSave, Header } = ComponentMapGroup
+    const { Container, Edit, Task, ButtonSave } = ComponentMapGroup
     const { data: { loading, error, allTasks } } = this.props
 
     if (loading) {
@@ -26,12 +25,6 @@ class PanelRight extends React.Component {
     return (
       <React.Fragment>
         <ComponentMapGroup>
-
-          <Header>
-            <Container maxWidth='300px' >
-              <FormattedMessage id='tasks.label' />
-            </Container>
-          </Header>
 
           <Container maxWidth='300px' >
             <Edit

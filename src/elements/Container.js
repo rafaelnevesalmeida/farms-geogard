@@ -4,6 +4,7 @@ const Container = styled.div`
   width: ${props => props.width || '100%'};
   max-width: ${props => props.maxWidth || 'auto'};
   height: ${props => props.height || '100%'};
+  margin-top: ${props => props.marginTop || null};
 
   background-color: ${props => props.backgroundColor || null};
   overflow: ${props => props.overFlow || null};

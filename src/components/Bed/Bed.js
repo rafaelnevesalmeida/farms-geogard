@@ -1,45 +1,21 @@
 import React from 'react'
 import { FormattedMessage } from 'react-intl'
 
-import { tasksPolylinesByTaskQuery } from '../Task/TaskFed.js'
 import Polyline from '../Polyline'
 import PolylineButton from '../../blocks/PolylineButton'
+import { ButtonAdd, ButtonVisible } from '../BedButtonAction'
 
 class Bed extends React.Component {
   constructor () {
     super()
     this.state = {
-      infoDisplay: 'none',
-      visible: false
+      infoDisplay: 'none'
     }
   }
 
-  componentDidMount () {
-    this.setState({
-      visible: this.props.polyline.visible
-    })
-  }
-
-  addPolylineToTask (polylineId) {
-    const { mutate, taskSelected } = this.props
-
-    mutate({
-      variables: {
-        TaskId: taskSelected,
-        PolylineId: polylineId
-      },
-      refetchQueries: [
-        {
-          query: tasksPolylinesByTaskQuery,
-          variables: { taskId: taskSelected }
-        }
-      ]
-    })
-  }
-
   render () {
-    const { polyline } = this.props
-    const { infoDisplay, visible } = this.state
+    const { polyline, taskSelected } = this.props
+    const { infoDisplay } = this.state
     const { Container, Button, Label, LabelInfo } = PolylineButton
 
     return ( // TODO change the visual props to modifier
@@ -53,19 +29,17 @@ class Bed extends React.Component {
               height='15px'
             />
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.addPolylineToTask(polyline.id)}>
-            <Label>+</Label>
-          </Button>
+
+          <ButtonAdd polylineId={polyline.id} taskId={taskSelected} />
+
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({
             infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
           })}>
             <Label>{ infoDisplay === 'none' ? 'v' : '^' }</Label>
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
-            visible: !visible
-          })}>
-            <Label>{ visible ? '<' : '>' }</Label>
-          </Button>
+
+          <ButtonVisible visible={polyline.visible} id={polyline.id} lineTypeId={polyline.lineTypeId} />
+
         </Container>
         <Container backgroundColor={'#AA8844' /* TODO get from theme */ }
           flexDirection='column'
@@ -75,10 +49,10 @@ class Bed extends React.Component {
             <FormattedMessage id='component.color' />: {polyline.strokeColor}
           </LabelInfo>
           <LabelInfo>
-            <FormattedMessage id='component.strokeOpacity' />: {polyline.strokeOpacity}
+            <FormattedMessage id='component.strokeOpacity' />: {polyline.lineType.strokeOpacity}
           </LabelInfo>
           <LabelInfo>
-            <FormattedMessage id='component.strokeWeight' />: {polyline.strokeWeight}
+            <FormattedMessage id='component.strokeWeight' />: {polyline.lineType.strokeWeight}
           </LabelInfo>
           <LabelInfo />
           <LabelInfo>
@@ -94,7 +68,7 @@ class Bed extends React.Component {
 
         <Polyline
           {...polyline}
-          visible={visible}
+          visible={polyline.visible}
         />
       </PolylineButton>
     )

@@ -63,6 +63,7 @@ class Task extends React.Component {
           {
             tasksPolylinesByTask.map((taskPolyline, j) =>
 
+              // TODO replace for a component
               <Container key={j}>
                 <Button grow='1'>
                   <Label>{taskPolyline.polyline.name}</Label>

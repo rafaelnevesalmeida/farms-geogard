@@ -25,16 +25,22 @@ export class Polyline extends React.Component {
       map,
       maps,
       path,
+      strokeColor,
+      lineType
+    } = this.props
+    const {
       icons,
       strokeWeight,
-      strokeOpacity,
-      strokeColor
-    } = this.props
+      strokeOpacity
+    } = lineType
 
     const google = window.google // ????
     if (!google) {
       return null
     }
+
+    console.log('===== map ===== : ', map)
+
     const params = {
       visible,
       maps,

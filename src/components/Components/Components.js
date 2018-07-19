@@ -9,8 +9,8 @@ import messages from '../../messages'
 import {
   Infos,
   SidePanel,
-  PanelLeft,
-  PanelRight,
+  PanelNewInputs,
+  // PanelRight,
   GoogleMap
 } from '../../components'
 
@@ -25,6 +25,7 @@ import {
 
 import { Link } from 'react-router-dom'
 
+// TODO remove duplication
 addLocaleData(en)
 addLocaleData(pt)
 
@@ -38,29 +39,29 @@ const Home = ({ lang }) => {
           </Label>
           <Button marginLeft='64px' width='115px'>
             <Label>
-              <FormattedMessage id='tab.home.label' />
-            </Label>
-          </Button>
-          <Button marginLeft='1px' width='115px' >
-            <Label>
               <nav>
-                <Link to="/components">
-                  <FormattedMessage id='tab.components.label' />
+                <Link to="/">
+                  <FormattedMessage id='tab.home.label' />
                 </Link>
               </nav>
             </Label>
           </Button>
+          <Button marginLeft='1px' width='115px'>
+            <Label>
+              <FormattedMessage id='tab.components.label' />
+            </Label>
+          </Button>
         </Header>
         <Container justifyContent='space-between'>
-          <SidePanel label='panel.components.label' side='left' width='190px'>
-            <PanelLeft />
+          <SidePanel label='panel.newInputs.label' side='left' width='190px'>
+            <PanelNewInputs />
           </SidePanel>
           <Center>
             <GoogleMap />
             <Infos />
           </Center>
-          <SidePanel label='panel.tasks.label' width='190px'>
-            <PanelRight />
+          <SidePanel label='panel.components.label' width='190px'>
+
           </SidePanel>
         </Container>
         <Footer />

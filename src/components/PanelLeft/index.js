@@ -1,1 +1,1 @@
-export { default } from './PanelLeftFed'
+export { default } from './PanelLeft'

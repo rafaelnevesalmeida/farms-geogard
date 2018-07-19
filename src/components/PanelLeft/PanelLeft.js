@@ -1,48 +1,18 @@
 import React from 'react'
-import { FormattedMessage } from 'react-intl'
 
-import { Mark, Bed, Track } from '../'
-import ComponentMapGroup from '../../blocks/ComponentMapGroup'
+import { MapGroup, MarkGroup } from '../MapGroup'
 
-const PanelLeft = ({ data: { loading, error, allPolylines, allTracks, allMarkers } }) => {
-  if (loading) {
-    return <p>Loading ...</p>
-  }
-  if (error) {
-    return <p>{error.message}</p>
-  }
-
-  const { Header } = ComponentMapGroup
-
+const PanelLeft = () => {
   return (
     <React.Fragment>
 
-      <ComponentMapGroup>
-        <Header>
-          <FormattedMessage id='beds.label' />
-        </Header>
-        {allPolylines.map((polyline, i) =>
-          <Bed key={i} polyline={polyline} />
-        )}
-      </ComponentMapGroup>
+      {// TODO get this info from DB
+      }
+      <MapGroup lineTypeId='1' label='beds.label' />
 
-      <ComponentMapGroup>
-        <Header>
-          <FormattedMessage id='tracks.label' />
-        </Header>
-        {allTracks.map((track, i) =>
-          <Track key={i} track={track} />
-        )}
-      </ComponentMapGroup>
+      <MapGroup lineTypeId='2' label='tracks.label' />
 
-      <ComponentMapGroup>
-        <Header>
-          <FormattedMessage id='marks.label' />
-        </Header>
-        {allMarkers.map((marker, i) =>
-          <Mark key={i} marker={marker} />
-        )}
-      </ComponentMapGroup>
+      <MarkGroup label='marks.label' />
 
     </React.Fragment>
   )

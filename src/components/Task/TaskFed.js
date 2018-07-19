@@ -13,22 +13,26 @@ export const tasksPolylinesByTaskQuery = gql`
       polyline {
         id
         name
-        visible
+        lineTypeId
         strokeColor
-        strokeWeight
-        strokeOpacity
-        icons {
+        lineType {
           id
-          iconItemId
-          offset
-          repeat
-          icon {
+          label
+          strokeOpacity
+          strokeWeight
+          icons {
             id
-            path
-            scale
-            strokeWeight
-            strokeColor
-            fillColor
+            iconItemId
+            offset
+            repeat
+            icon {
+              id
+              path
+              scale
+              strokeWeight
+              strokeColor
+              fillColor
+            }
           }
         }
         path {

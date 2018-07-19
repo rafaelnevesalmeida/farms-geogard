@@ -3,25 +3,19 @@ import { FormattedMessage } from 'react-intl'
 
 import Marker from '../Marker'
 import PolylineButton from '../../blocks/PolylineButton'
+import { MarkButtonVisible } from '../BedButtonAction'
 
 class Mark extends React.Component {
   constructor () {
     super()
     this.state = {
-      infoDisplay: 'none',
-      visible: false
+      infoDisplay: 'none'
     }
-  }
-
-  componentDidMount () {
-    this.setState({
-      visible: this.props.marker.visible
-    })
   }
 
   render () {
     const { marker } = this.props
-    const { infoDisplay, visible } = this.state
+    const { infoDisplay } = this.state
     const { Container, Button, Label, LabelInfo } = PolylineButton
 
     return ( // TODO change the visual props to modifier
@@ -35,11 +29,9 @@ class Mark extends React.Component {
           })}>
             <Label>{ infoDisplay === 'none' ? 'v' : '^' }</Label>
           </Button>
-          <Button width='24px' marginLeft='1px' onClick={() => this.setState({
-            visible: !visible
-          })}>
-            <Label>{ visible ? '<' : '>' }</Label>
-          </Button>
+
+          <MarkButtonVisible visible={marker.visible} id={marker.id} />
+
         </Container>
         <Container backgroundColor={'#AA8844' /* TODO get from theme */ }
           flexDirection='column'
@@ -57,7 +49,7 @@ class Mark extends React.Component {
 
         <Marker
           {...marker}
-          visible={visible}
+          visible={marker.visible}
         />
       </PolylineButton>
     )
