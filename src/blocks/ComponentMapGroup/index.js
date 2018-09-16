@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 import Task from '../../components/Task'
 import TaskButtonSave from '../../components/TaskButtonAction/TaskButtonSaveFed.js'
+import NewInputButtonSave from '../../components/NewInputButtonAction/NewInputButtonSaveFed.js'
 import { Header, Container, Edit } from '../../elements'
 
 const ComponentMapGroup = styled.div`
@@ -21,5 +22,6 @@ ComponentMapGroup.Container = Container
 ComponentMapGroup.Edit = Edit
 ComponentMapGroup.Task = Task
 ComponentMapGroup.ButtonSave = TaskButtonSave
+ComponentMapGroup.NewInputButtonSave = NewInputButtonSave
 
 export default ComponentMapGroup

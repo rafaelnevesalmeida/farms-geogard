@@ -9,6 +9,7 @@ export const allWaypoints = gql`
       id
       lat
       lon
+      visible
       hdgSrcId
       weedingPatternId
       command

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Button, Label } from '../../elements'
 
-class TaskButtonAction extends React.Component {
+class NewInputButtonAction extends React.Component {
   onClick () {
     const { id, mutate } = this.props
     mutate({
@@ -23,4 +23,4 @@ class TaskButtonAction extends React.Component {
   }
 }
 
-export default TaskButtonAction
+export default NewInputButtonAction

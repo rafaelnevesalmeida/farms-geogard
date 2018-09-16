@@ -43,7 +43,7 @@ class Mark extends React.Component {
           </LabelInfo>
           <Container>
             <LabelInfo>{ marker.position.lat }</LabelInfo>
-            <LabelInfo>{ marker.position.lng }</LabelInfo>
+            <LabelInfo>{ marker.position.lon }</LabelInfo>
           </Container>
         </Container>
 

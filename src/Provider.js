@@ -13,7 +13,8 @@ export class ContextProvider extends React.Component {
         center: { lat: 53.16180499999999, lng: -4.196003000000019 }
       },
       lang: 'en',
-      taskSelected: null
+      taskSelected: null,
+      bedSelected: null
     }
   }
 
@@ -48,9 +49,14 @@ export class ContextProvider extends React.Component {
   } */
 
   selectTask (id) {
-    console.log('======= selectTask -> id =======: ', id)
     this.setState({
       taskSelected: id === this.state.taskSelected ? null : id
+    })
+  }
+
+  selectBed (id) {
+    this.setState({
+      bedSelected: id === this.state.bedSelected ? null : id
     })
   }
 
@@ -62,7 +68,8 @@ export class ContextProvider extends React.Component {
         setMapZoom: this.setMapZoom.bind(this),
         setMapTypeId: this.setMapTypeId.bind(this),
         setMapCenter: this.setMapCenter.bind(this),
-        selectTask: this.selectTask.bind(this)
+        selectTask: this.selectTask.bind(this),
+        selectBed: this.selectBed.bind(this)
       }}>
         {this.props.children}
       </Context.Provider>

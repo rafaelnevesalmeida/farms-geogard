@@ -1,7 +1,7 @@
 import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 
-import MapGroup from './MapGroupContexted.js'
+import ComponentBedGroup from './ComponentBedGroupContexted.js'
 
 export const polylinesByType = gql`
   query polylinesByType ($lineTypeId: Int) {
@@ -36,10 +36,18 @@ export const polylinesByType = gql`
         lat
         lng: lon
       }
+      polylinesWaypoints {
+        id
+        waypoint {
+          id
+          lat
+          lng: lon
+        }
+      }
     }
   }
 `
 
 export default graphql(polylinesByType, {
   options: ({ lineTypeId }) => ({ variables: { lineTypeId: lineTypeId } })
-})(MapGroup)
+})(ComponentBedGroup)

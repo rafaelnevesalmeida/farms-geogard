@@ -14,15 +14,11 @@ class HdgSrc extends React.Component {
   }
 
   componentDidMount () {
-    console.log('=== command didMount === : ', this.props.command)
     this.setState({ command: this.props.command ? this.props.command : '' })
   }
 
   onExit () {
     const { waypointId, mutate } = this.props
-
-    console.log('=== command onExit === : ', this.state.command)
-
     mutate({
       variables: { waypointId: waypointId, command: this.state.command }
       /* refetchQueries: [
@@ -34,13 +30,14 @@ class HdgSrc extends React.Component {
     })
   }
 
+  // TODO change this line: placeholder='New command' , to use FormatteMessage
   render () {
     return (
       <LabelInfo>
         <FormattedMessage id='newInput.command.label' />: <Edit
           width='120px'
           grow='1'
-          placeholder='New task name'
+          placeholder='New command'
           value={this.state.command}
           onChange={(e) => this.setState({ command: e.target.value })}
           onBlur={this.onExit}

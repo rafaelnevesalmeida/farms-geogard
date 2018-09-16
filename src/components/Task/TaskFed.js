@@ -35,10 +35,10 @@ export const tasksPolylinesByTaskQuery = gql`
             }
           }
         }
-        path {
+        waypoint {
           id
           lat
-          lng
+          lng: lon
         }
       }
     }

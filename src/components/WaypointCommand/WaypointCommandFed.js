@@ -4,8 +4,8 @@ import gql from 'graphql-tag'
 import WaypointCommand from './WaypointCommand.js'
 
 const WaypointCommandMutation = gql`
-  mutation setCommandWayPoint($waypointId: Int!, $command: String!) {
-    setCommandWayPoint (
+  mutation setCommandWaypoint($waypointId: Int!, $command: String!) {
+    setCommandWaypoint (
       waypointId: $waypointId
       command: $command
     )

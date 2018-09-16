@@ -10,7 +10,7 @@ const BedButtonAdd = (props) => {
 }
 
 const bedMutation = gql`
-  mutation visiblePolyline ($PolylineId: Int!, $TaskId: Int!) {
+  mutation addTasksPolylines ($PolylineId: Int!, $TaskId: Int!) {
     addTasksPolylines (
       TaskId: $TaskId
       PolylineId: $PolylineId

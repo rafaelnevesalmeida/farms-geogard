@@ -1,12 +1,21 @@
 import React from 'react'
 
+// import { polylinesByType } from '../MapGroup/MapGroupFed.js'
+import { polylinesByType } from '../MapGroup/ComponentBedGroupFed.js'
 import { Button, Label } from '../../elements'
 
 class TaskButtonAction extends React.Component {
   onClick () {
-    const { id, mutate } = this.props
+    const { polylineId, waypointId, mutate } = this.props
+
     mutate({
-      variables: { id: id }
+      variables: { PolylineId: polylineId, WaypointId: waypointId },
+      refetchQueries: [
+        {
+          query: polylinesByType,
+          variables: { lineTypeId: '1' }
+        }
+      ]
     })
   }
 

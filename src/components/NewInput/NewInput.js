@@ -6,7 +6,7 @@ import WeedingPattern from '../WeedingPatern'
 import WaypointCommand from '../WaypointCommand'
 import Circle from '../Circle'
 import PolylineButton from '../../blocks/PolylineButton'
-import { ButtonAdd, ButtonVisible } from '../BedButtonAction'
+import { ButtonAdd, ButtonVisible } from '../NewInputButtonAction'
 
 class Bed extends React.Component {
   constructor () {
@@ -17,7 +17,7 @@ class Bed extends React.Component {
   }
 
   render () {
-    const { newInput, taskSelected } = this.props
+    const { newInput, bedSelected } = this.props
     const { infoDisplay } = this.state
     const { Container, Button, Label, LabelInfo } = PolylineButton
 
@@ -33,7 +33,7 @@ class Bed extends React.Component {
             />
           </Button>
 
-          <ButtonAdd polylineId={newInput.id} taskId={taskSelected} />
+          <ButtonAdd polylineId={bedSelected} waypointId={newInput.id} />
 
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({
             infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'

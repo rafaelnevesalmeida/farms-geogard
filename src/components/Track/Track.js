@@ -66,10 +66,10 @@ class Track extends React.Component {
           <LabelInfo>
             <FormattedMessage id='component.coordinates' />:
           </LabelInfo>
-          { track.path.map((coord, i) =>
+          { track.waypoint.map((coord, i) =>
             <Container key={i}>
               <LabelInfo>{coord.lat}</LabelInfo>
-              <LabelInfo>{coord.lng}</LabelInfo>
+              <LabelInfo>{coord.lon}</LabelInfo>
             </Container>
           )}
         </Container>

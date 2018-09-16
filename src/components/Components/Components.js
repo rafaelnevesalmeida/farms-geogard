@@ -10,7 +10,7 @@ import {
   Infos,
   SidePanel,
   PanelNewInputs,
-  // PanelRight,
+  PanelComponents,
   GoogleMap
 } from '../../components'
 
@@ -61,7 +61,7 @@ const Home = ({ lang }) => {
             <Infos />
           </Center>
           <SidePanel label='panel.components.label' width='190px'>
-
+            <PanelComponents />
           </SidePanel>
         </Container>
         <Footer />

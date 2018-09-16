@@ -11,11 +11,11 @@ export const allMarkers = gql`
       id
       name
       visible
-      PathId
+      waypointId
       position {
         id
         lat
-        lng
+        lon
       }
     }
   }

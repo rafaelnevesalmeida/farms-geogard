@@ -3,9 +3,10 @@ import { FormattedMessage } from 'react-intl'
 
 import Polyline from '../Polyline'
 import PolylineButton from '../../blocks/PolylineButton'
-import { ButtonAdd, ButtonVisible } from '../BedButtonAction'
+import Coordinate from '../Coordinate'
+import { ButtonVisible } from '../BedButtonAction'
 
-class Bed extends React.Component {
+class BedComponent extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -14,7 +15,7 @@ class Bed extends React.Component {
   }
 
   render () {
-    const { polyline, taskSelected } = this.props
+    const { polyline, bedSelected, selectBed, lineTypeId } = this.props
     const { infoDisplay } = this.state
     const { Container, Button, Label, LabelInfo } = PolylineButton
 
@@ -30,7 +31,9 @@ class Bed extends React.Component {
             />
           </Button>
 
-          <ButtonAdd polylineId={polyline.id} taskId={taskSelected} />
+          <Button width='24px' marginLeft='1px' onClick={() => selectBed(polyline.id)}>
+            <Label>{ bedSelected === polyline.id ? '#' : '=' }</Label>
+          </Button>
 
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({
             infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'
@@ -41,7 +44,7 @@ class Bed extends React.Component {
           <ButtonVisible visible={polyline.visible} id={polyline.id} lineTypeId={polyline.lineTypeId} />
 
         </Container>
-        <Container backgroundColor={'#AA8844' /* TODO get from theme */ }
+        <Container backgroundColor={'#886622' /* TODO get from theme */ }
           flexDirection='column'
           display={infoDisplay}
         >
@@ -55,24 +58,16 @@ class Bed extends React.Component {
             <FormattedMessage id='component.strokeWeight' />: {polyline.lineType.strokeWeight}
           </LabelInfo>
           <LabelInfo />
-          <LabelInfo>
-            <FormattedMessage id='component.coordinates' />:
-          </LabelInfo>
-          { polyline.waypoint.map((coord, i) =>
-            <Container key={i}>
-              <LabelInfo>{coord.lat}</LabelInfo>
-              <LabelInfo>{coord.lng}</LabelInfo>
-            </Container>
-          )}
+
+          <Coordinate lineTypeId={lineTypeId} polylinesWaypoints={polyline.polylinesWaypoints} />
         </Container>
 
         <Polyline
           {...polyline}
-          visible={polyline.visible}
         />
       </PolylineButton>
     )
   }
 }
 
-export default Bed
+export default BedComponent

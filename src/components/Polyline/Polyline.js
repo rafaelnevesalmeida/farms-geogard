@@ -24,10 +24,23 @@ export class Polyline extends React.Component {
       visible,
       map,
       maps,
-      path,
+      waypoint,
       strokeColor,
       lineType
     } = this.props
+
+    /* let path = []
+
+    waypoint.map((coord, i) => {
+         path.add
+      }
+    )
+    polylinesWaypoints.map((polylineWaypoint, i) => {
+      path[i] = polylineWaypoint.coord
+    }) */
+
+    const path = waypoint
+
     const {
       icons,
       strokeWeight,
@@ -38,8 +51,6 @@ export class Polyline extends React.Component {
     if (!google) {
       return null
     }
-
-    console.log('===== map ===== : ', map)
 
     const params = {
       visible,
@@ -61,7 +72,7 @@ export class Polyline extends React.Component {
 }
 
 Polyline.propTypes = {
-  path: PropTypes.array,
+  waypoint: PropTypes.array,
   strokeColor: PropTypes.string,
   strokeOpacity: PropTypes.number,
   strokeWeight: PropTypes.number
