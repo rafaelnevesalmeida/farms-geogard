@@ -3,9 +3,13 @@ import React from 'react'
 
 import { Container, LabelStatus } from '../../elements'
 
-const Infos = ({mapParams}) => {
+const Infos = ({mapParams, map}) => {
   return ( // TODO change the visual props to modifier
     <Container height='auto'>
+
+      <LabelStatus marginLeft='15px'>
+        { map !== null ? 'online' : 'offline' }
+      </LabelStatus>
 
       <LabelStatus marginLeft='15px'>
         Zoom: { mapParams.zoom }

@@ -1,1 +1,1 @@
-export { default } from './PanelLeft'
+export { default } from './PanelLeftContexted'

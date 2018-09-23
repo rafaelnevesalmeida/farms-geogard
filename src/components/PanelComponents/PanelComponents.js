@@ -14,6 +14,7 @@ class PanelComponents extends React.Component {
 
   render () {
     const { Container, Edit, NewInputButtonSave } = ComponentMapGroup
+    const { lineTypeBed, lineTypeTrack } = this.props
 
     // TODO placeholder from i18n
     return (
@@ -28,10 +29,10 @@ class PanelComponents extends React.Component {
               value={this.state.bedName}
               onChange={(e) => this.setState({ bedName: e.target.value })}
             />
-            <NewInputButtonSave name={this.state.bedName} lineTypeId='1' />
+            <NewInputButtonSave name={this.state.bedName} lineTypeId={lineTypeBed} />
           </Container>
 
-          <ComponentBedGroup lineTypeId='1' label='beds.label' />
+          <ComponentBedGroup lineTypeId={lineTypeBed} label='beds.label' />
 
         </ComponentMapGroup>
 
@@ -45,10 +46,10 @@ class PanelComponents extends React.Component {
               value={this.state.trackName}
               onChange={(e) => this.setState({ trackName: e.target.value })}
             />
-            <NewInputButtonSave name={this.state.trackName} lineTypeId='2' />
+            <NewInputButtonSave name={this.state.trackName} lineTypeId={lineTypeTrack} />
           </Container>
 
-          <ComponentBedGroup lineTypeId='2' label='tracks.label' />
+          <ComponentBedGroup lineTypeId={lineTypeTrack} label='tracks.label' />
 
         </ComponentMapGroup>
 

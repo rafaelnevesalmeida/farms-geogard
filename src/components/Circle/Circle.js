@@ -20,6 +20,7 @@ export class Circle extends React.Component {
   }
 
   renderCircle () {
+    /*
     const {
       visible,
       lat,
@@ -58,7 +59,7 @@ export class Circle extends React.Component {
       // draggable
     }
 
-    this.circle = new google.maps.Circle(pref)
+    this.circle = new google.maps.Circle(pref) */
   }
 
   render () {

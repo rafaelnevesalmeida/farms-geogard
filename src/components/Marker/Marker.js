@@ -20,37 +20,39 @@ export class Marker extends React.Component {
   }
 
   renderMarker () {
-    const {
-      visible,
-      map,
-      position,
-      mapCenter,
-      icon,
-      label,
-      draggable,
-      title
-    } = this.props
+    if (this.props.map !== null) {
+      const {
+        visible,
+        map,
+        position,
+        mapCenter,
+        icon,
+        label,
+        draggable,
+        title
+      } = this.props
 
-    const google = window.google // ????
-    if (!google) {
-      return null
-    }
+      const google = window.google // ????
+      if (!google) {
+        return null
+      }
 
-    let pos = position || mapCenter
-    if (!(pos instanceof google.maps.LatLng)) {
-      pos = new google.maps.LatLng(pos.lat, pos.lng)
-    }
+      let pos = position || mapCenter
+      if (!(pos instanceof google.maps.LatLng)) {
+        pos = new google.maps.LatLng(pos.lat, pos.lng)
+      }
 
-    const pref = {
-      visible,
-      map,
-      position: pos,
-      icon,
-      label,
-      title,
-      draggable
+      const pref = {
+        visible,
+        map,
+        position: pos,
+        icon,
+        label,
+        title,
+        draggable
+      }
+      this.marker = new google.maps.Marker(pref)
     }
-    this.marker = new google.maps.Marker(pref)
   }
 
   render () {

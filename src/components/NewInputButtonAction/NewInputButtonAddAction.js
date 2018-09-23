@@ -6,14 +6,14 @@ import { Button, Label } from '../../elements'
 
 class TaskButtonAction extends React.Component {
   onClick () {
-    const { polylineId, waypointId, mutate } = this.props
+    const { polyline, waypointId, mutate } = this.props
 
     mutate({
-      variables: { PolylineId: polylineId, WaypointId: waypointId },
+      variables: { PolylineId: polyline.id, WaypointId: waypointId },
       refetchQueries: [
         {
           query: polylinesByType,
-          variables: { lineTypeId: '1' }
+          variables: { lineTypeId: polyline.lineTypeId }
         }
       ]
     })

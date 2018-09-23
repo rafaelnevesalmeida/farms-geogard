@@ -6,7 +6,7 @@ const PanelNewInputs = () => {
   return (
     <React.Fragment>
 
-      <NewInputsGroup lineTypeId='1' />
+      <NewInputsGroup />
 
     </React.Fragment>
   )

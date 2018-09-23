@@ -20,7 +20,7 @@ class Task extends React.Component {
 
   render () {
     return (
-      <Button onClick={() => this.onClick(this.props.taskPolylineId)}>
+      <Button marginLeft='1px' onClick={() => this.onClick(this.props.taskPolylineId)}>
         <Button.Label>{this.props.label}</Button.Label>
       </Button>
     )

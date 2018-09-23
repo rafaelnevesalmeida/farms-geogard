@@ -11,6 +11,7 @@ const Label = styled.h1`
 
   text-align: center;
   height: ${props => props.height || 'auto'};
+  width: ${props => props.width || 'auto'};
   font-family: ${props => props.theme.fontFamily.default || null};
   font-size: ${props => props.theme.fontSize.medium || null};
 
@@ -18,6 +19,7 @@ const Label = styled.h1`
   flex-direction: row;
   justify-content: flex-start;
   align-content: flex-start;
+  flex-grow:  ${props => props.grow || 0};
 `
 
 export default Label

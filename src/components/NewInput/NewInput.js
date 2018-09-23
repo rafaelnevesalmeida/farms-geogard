@@ -33,7 +33,7 @@ class Bed extends React.Component {
             />
           </Button>
 
-          <ButtonAdd polylineId={bedSelected} waypointId={newInput.id} />
+          <ButtonAdd polyline={bedSelected} waypointId={newInput.id} />
 
           <Button width='24px' marginLeft='1px' onClick={() => this.setState({
             infoDisplay: infoDisplay === 'none' ? 'flex' : 'none'

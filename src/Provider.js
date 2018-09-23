@@ -14,7 +14,9 @@ export class ContextProvider extends React.Component {
       },
       lang: 'en',
       taskSelected: null,
-      bedSelected: null
+      bedSelected: null,
+      lineTypeBed: '1',
+      lineTypeTrack: '2'
     }
   }
 
@@ -54,9 +56,9 @@ export class ContextProvider extends React.Component {
     })
   }
 
-  selectBed (id) {
+  selectBed (polyline) {
     this.setState({
-      bedSelected: id === this.state.bedSelected ? null : id
+      bedSelected: polyline === this.state.bedSelected ? null : polyline
     })
   }
 
